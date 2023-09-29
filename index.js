@@ -8,7 +8,7 @@ app.post('/webhook', bodyParser.raw({type: 'application/json'}), async function(
     try {
         const payload = req.body;
         const headers = req.headers;
- 
+        console.log(req.body);
         const wh = new Webhook("whsec_cuQA8EFMSSsZ7mBm3leqT/VtR0mY7aiX");
         const evt = wh.verify(payload, headers);
         const { id } = evt.data;
