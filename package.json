@@ -9,6 +9,9 @@
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=14 <15"
+  },
   "dependencies": {
     "@clerk/clerk-sdk-node": "^4.12.10",
     "body-parser": "^1.20.2",
