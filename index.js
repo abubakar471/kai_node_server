@@ -1,7 +1,10 @@
-import express from "express"
-import bodyParser from "body-parser"
-import { Webhook,WebhookRequiredHeaders } from 'svix';
-import {WebhookEvent} from "@clerk/clerk-sdk-node"
+// import express from "express"
+// import bodyParser from "body-parser"
+// import { Webhook,WebhookRequiredHeaders } from 'svix';
+// import {WebhookEvent} from "@clerk/clerk-sdk-node"
+const express = require("express");
+const bodyParser = require("body-parser");
+const {Webhook} = require("svix");
 const app = express();
 
 app.post('/webhook', bodyParser.raw({type: 'application/json'}), function(req, res) {
@@ -33,9 +36,10 @@ app.post('/webhook', bodyParser.raw({type: 'application/json'}), function(req, r
     const headers = req.headers;
     const secret = "whsec_cuQA8EFMSSsZ7mBm3leqT/VtR0mY7aiX";
 
+    console.log("req.body", payload);
     const wh = new Webhook(secret);
     let msg;
-    
+
     try {
         msg = wh.verify(payload, headers);
         console.log(msg);
